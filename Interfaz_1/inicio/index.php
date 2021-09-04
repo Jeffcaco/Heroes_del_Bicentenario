@@ -1,3 +1,15 @@
+<?php
+    
+    include_once("../../database/conexion.php");
+    session_start();
+    //si se desea extraer mas datos
+    /*$usuario=$_SESSION['user'];
+    $consulta = "SELECT * FROM Usuario WHERE user='$usuario'";
+    $resultado = mysqli_query($conexion, $consulta);
+    $row = mysqli_fetch_array($resultado);
+    <?php echo $row['password']; ?>*/
+    
+?>
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +23,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../recursos/css/style.css">
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
@@ -20,12 +32,11 @@
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
     <title>Hospital Héroes del Bicentenario</title>
-    <link rel="icon" type="image/svg" href="hospital.svg"/>
+    <link rel="icon" type="image/svg" href="../recursos/img/hospital.svg"/>
 </head>
 
 <body>
     <div class="d-flex" id="content-wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
@@ -42,7 +53,7 @@
                     Estadísticas</a>
                 <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-book lead mr-2"></i></i>
                     Registro de acceso</a>
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-close lead mr-2"></i></i>
+                <a href="../cerrar_sesion/cerrar_sesion.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-close lead mr-2"></i></i>
                     Cerrar cesión</a>
             </div>
         </div>
@@ -60,23 +71,17 @@
               </button>
     
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="form-inline position-relative d-inline-block my-2">
-                  <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
-                  <button class="btn position-absolute btn-search" type="submit"><i class="icon ion-md-search"></i></button>
-                </form>
+
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                   <li class="nav-item dropdown">
                     <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img src="assets/img/user-1.png" class="img-fluid rounded-circle avatar mr-2"
-                      alt="https://generated.photos/" />
-                    Diego Velázquez
+                            <label for="usuario">Usuario : <?php echo $_SESSION['user']; ?> </label> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">Mi perfil</a>
-                      <a class="dropdown-item" href="#">Suscripciones</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Cerrar sesión</a>
+                      <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                     </div>
                   </li>
                 </ul>
@@ -92,11 +97,33 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-lg-9 col-md-8">
-                            <h1 class="font-weight-bold mb-0">Bienvenido Diego</h1>
+                            <h1 class="font-weight-bold mb-0">Bienvenido <?php echo $_SESSION['user']; ?></h1>
                             <p class="lead text-muted">Revisa la última información</p>
                           </div>
                           <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>
+                            <!--<button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>-->
+                            <button type="button" class="btn btn-primary w-100 align-self-center" data-toggle="modal" data-target="#exampleModal">
+                                Ver últimas incidencias
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Reporte de incidencias</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    ...
+                                  </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -109,30 +136,30 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">Ingresos mensuales</h6>
-                                        <h3 class="font-weight-bold">$50000</h3>
-                                        <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle"></i> 50.50%</h6>
+                                        <h6 class="text-muted"><i class="icon ion-md-stats mr-2" style="font-size:25px;"></i>Total asistencia</h6>
+                                        <h3 class="font-weight-bold" style="text-align:center;">250</h3>
+                                        <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">Productos activos</h6>
-                                        <h3 class="font-weight-bold">100</h3>
-                                        <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle"></i> 25.50%</h6>
+                                        <h6 class="text-muted"><i class="icon ion-md-document mr-2" style="font-size:25px;"></i>Total informes</h6>
+                                        <h3 class="font-weight-bold" style="text-align:center;">100</h3>
+                                        <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">No. de usuarios</h6>
-                                        <h3 class="font-weight-bold">2500</h3>
-                                        <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle"></i> 75.50%</h6>
+                                        <h6 class="text-muted"><i class="icon ion-md-mail mr-2" style="font-size:25px;"></i>Total aviso seguridad</h6>
+                                        <h3 class="font-weight-bold" style="text-align:center;">2500</h3>
+                                        <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">Usuarios nuevos</h6>
-                                        <h3 class="font-weight-bold">500</h3>
-                                        <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle"></i> 15.50%</h6>
+                                        <h6 class="text-muted"><i class="icon ion-md-barcode mr-2" style="font-size:25px;"></i>Personal registrado</h6>
+                                        <h3 class="font-weight-bold" style="text-align:center;">500</h3>
+                                        <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +174,13 @@
                           <div class="col-lg-8 my-3">
                               <div class="card rounded-0">
                                   <div class="card-header bg-light">
-                                    <h6 class="font-weight-bold mb-0">Número de usuarios de paga</h6>
+                                    <h5 class="font-weight-bold mb-0">Número de personal registrado por área</h5>
+                                    <h4 style="text-align:right;"><span class="badge badge-dark">
+                                        <?php 
+                                            date_default_timezone_set('America/Lima'); 
+                                            echo date('m-d-Y, h:i:s a', time()); 
+                                        ?>
+                                    </h4></span>
                                   </div>
                                   <div class="card-body">
                                     <canvas id="myChart" width="300" height="150"></canvas>
@@ -157,55 +190,56 @@
                           <div class="col-lg-4 my-3">
                             <div class="card rounded-0">
                                 <div class="card-header bg-light">
-                                    <h6 class="font-weight-bold mb-0">Ventas recientes</h6>
+                                    <h6 class="font-weight-bold mb-0">Movimiento por departamento</h6>
                                 </div>
-                                <div class="card-body pt-2">
+                                <div class="card-body pt-2" >
                                     <div class="d-flex border-bottom py-2">
                                         <div class="d-flex mr-3">
-                                          <h2 class="align-self-center mb-0"><i class="icon ion-md-pricetag"></i></h2>
+                                          <h2 class="align-self-center mb-0 badge badge-secondary" style="font-size:28px;"><i class="icon ion-md-desktop"></i></h2>
                                         </div>
                                         <div class="align-self-center">
-                                          <h6 class="d-inline-block mb-0">$250</h6><span class="badge badge-success ml-2">10% descuento</span>
-                                          <small class="d-block text-muted">Curso diseño web</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex border-bottom py-2">
-                                        <div class="d-flex mr-3">
-                                          <h2 class="align-self-center mb-0"><i class="icon ion-md-pricetag"></i></h2>
-                                        </div>
-                                        <div class="align-self-center">
-                                          <h6 class="d-inline-block mb-0">$250</h6><span class="badge badge-success ml-2">10% descuento</span>
-                                          <small class="d-block text-muted">Curso diseño web</small>
+                                        <small class="d-block text-muted">SALA DE SEGURIDAD</small>
+                                        <h6 class="d-inline-block mb-0">250</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex border-bottom py-2">
                                         <div class="d-flex mr-3">
-                                          <h2 class="align-self-center mb-0"><i class="icon ion-md-pricetag"></i></h2>
+                                          <h2 class="align-self-center mb-0 badge badge-secondary" style="font-size:28px;"><i class="icon ion-md-pulse"></i></h2>
                                         </div>
                                         <div class="align-self-center">
-                                          <h6 class="d-inline-block mb-0">$250</h6><span class="badge badge-success ml-2">10% descuento</span>
-                                          <small class="d-block text-muted">Curso diseño web</small>
+                                        <small class="d-block text-muted">SALA DE OPERACIONES</small>
+                                        <h6 class="d-inline-block mb-0">250</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex border-bottom py-2">
                                         <div class="d-flex mr-3">
-                                          <h2 class="align-self-center mb-0"><i class="icon ion-md-pricetag"></i></h2>
+                                          <h2 class="align-self-center mb-0 badge badge-secondary" style="font-size:28px;"><i class="icon ion-md-body"></i></h2>
                                         </div>
                                         <div class="align-self-center">
-                                          <h6 class="d-inline-block mb-0">$250</h6><span class="badge badge-success ml-2">10% descuento</span>
-                                          <small class="d-block text-muted">Curso diseño web</small>
+                                        <small class="d-block text-muted">SALA DE DESINFECCION</small>
+                                        <h6 class="d-inline-block mb-0">250</h6>
                                         </div>
                                     </div>
-                                    <div class="d-flex border-bottom py-2 mb-3">
+                                    <div class="d-flex border-bottom py-2">
                                         <div class="d-flex mr-3">
-                                          <h2 class="align-self-center mb-0"><i class="icon ion-md-pricetag"></i></h2>
+                                          <h2 class="align-self-center mb-0 badge badge-secondary" style="font-size:28px;"><i class="icon ion-md-flask"></i></h2>
                                         </div>
                                         <div class="align-self-center">
-                                          <h6 class="d-inline-block mb-0">$250</h6><span class="badge badge-success ml-2">10% descuento</span>
-                                          <small class="d-block text-muted">Curso diseño web</small>
+                                        <small class="d-block text-muted">LABORATORIO</small>
+                                        <h6 class="d-inline-block mb-0">250</h6>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100">Ver todas</button>
+                                    <div class="d-flex border-bottom py-2">
+                                        <div class="d-flex mr-3">
+                                          <h2 class="align-self-center mb-0 badge badge-secondary" style="font-size:28px;"><i class="icon ion-md-clipboard"></i></h2>
+                                        </div>
+                                        <div class="align-self-center">
+                                        <small class="d-block text-muted">CONSULTORIO</small>
+                                        <h6 class="d-inline-block mb-0">250</h6>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary w-100">Ver detalles</button>
                                 </div>
                             </div>
                           </div>
@@ -231,19 +265,24 @@
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
         <script>
+            <?php $num=50;
+                  $num2=115;
+                  $num3=185;
+                  $num4=235; 
+            ?>
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, { 
                 type: 'bar',
                 data: {
-                    labels: ['Feb 2020', 'Mar 2020', 'Abr 2020', 'May 2020'],
+                    labels: ['Seguridad', 'Operaciones', 'Desinfección', 'Laboratorio'],
                     datasets: [{
-                        label: 'Nuevos usuarios',
-                        data: [50, 100, 150, 200],
+                        label: 'Cantidad',
+                        data: [<?php print $num.','.$num2.','.$num3.','.$num4 ?>],
                         backgroundColor: [
-                            '#12C9E5',  
-                            '#12C9E5',
-                            '#12C9E5',
-                            '#111B54'
+                            '#B10F1C',  
+                            '#343A40',
+                            '#B10F1C',
+                            '#343A40'
                         ],
                         maxBarThickness: 30,
                         maxBarLength: 2

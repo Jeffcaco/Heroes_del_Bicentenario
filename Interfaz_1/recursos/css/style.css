@@ -68,8 +68,12 @@ a:hover {
 .stat {
     border-right: 1px solid var(--grey);
 }
+/*****************************/
+.formato-movimiento{
+    text-align: center !important; 
+}
 
-  
+/******************************/
 @media (max-width: 768px) {
     #sidebar-container {
       display: none;
