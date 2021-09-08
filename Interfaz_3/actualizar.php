@@ -1,9 +1,9 @@
 <?php 
-    include("c../../database/conexion.php");
+    include_once("../database/conexion.php");
 
 $dni=$_GET['id'];
 $sql="SELECT * FROM empleado WHERE DNI='$dni'";
-$query=mysqli_query($conn,$sql);
+$query=mysqli_query($conexion,$sql);
 $row=mysqli_fetch_array($query);
 ?>
 
