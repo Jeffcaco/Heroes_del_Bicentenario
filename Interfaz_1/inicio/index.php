@@ -242,8 +242,8 @@
                                         <h6 class="d-inline-block mb-0">250</h6>
                                         </div>
                                     </div>
-                                    
-                                    <button class="btn btn-primary w-100">Ver detalles</button>
+                                    <!--  -->
+                                        <a href="../../Interfaz_2/dashboard.php" class="btn btn-primary w-100" role="button" aria-pressed="true">Ver detalles</a>
                                 </div>
                             </div>
                           </div>
