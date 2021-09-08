@@ -1,5 +1,5 @@
 <?php
-    include_once("../../database/conexion.php");
+    include_once("../database/conexion.php");
     session_start();  
 ?>
 
@@ -34,18 +34,22 @@
         <!-- Sidebar -->
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
-                <h4 class="text-light  mb-0">Hospital Héroes del Bicentenario<i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i></h4>
+                <h4 class="text-light  mb-0">
+                    <a href="../Interfaz_1/inicio/index.php" class="text-light">Hospital Héroes del Bicentenario</a>
+                    <br><br>
+                    <i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i>
+                </h4>
             </div>
             <div class="menu">
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
+                <a href="" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
                     Dashboard</a>
 
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                <a href="../Interfaz_3/personal.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
                     Personal</a>
 
                 <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-stats lead mr-2"></i>
                     Estadísticas</a>
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-book lead mr-2"></i></i>
+                <a href="../Interfaz_3/acceso.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-book lead mr-2"></i></i>
                     Registro de acceso</a>
                 <a href="../cerrar_sesion/cerrar_sesion.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-close lead mr-2"></i></i>
                     Cerrar cesión</a>
@@ -55,8 +59,8 @@
 
         <div class="w-100">
 
-         <!-- Navbar -->
-         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container">
     
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -73,7 +77,11 @@
                             <label for="usuario">Usuario : <?php echo $_SESSION['user']; ?> </label> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Mi perfil</a>
+                      <a class="dropdown-item" href="">Dashboard</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="../Interfaz_3/personal.php">Personal</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="../Interfaz_3/acceso.php">Registro de acceso</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                     </div>

@@ -40,18 +40,19 @@
         <!-- Sidebar -->
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
-                <h4 class="text-light  mb-0">Hospital Héroes del Bicentenario<i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i></h4>
+                <h4 class="text-light  mb-0">Hospital Héroes del Bicentenario
+                <br><br><i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i></h4>
             </div>
             <div class="menu">
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
+                <a href="../../Interfaz_2/dashboard.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
                     Dashboard</a>
 
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                <a href="../../Interfaz_3/personal.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
                     Personal</a>
 
                 <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-stats lead mr-2"></i>
                     Estadísticas</a>
-                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-book lead mr-2"></i></i>
+                <a href="../../Interfaz_3/acceso.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-book lead mr-2"></i></i>
                     Registro de acceso</a>
                 <a href="../cerrar_sesion/cerrar_sesion.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-close lead mr-2"></i></i>
                     Cerrar cesión</a>
@@ -79,7 +80,11 @@
                             <label for="usuario">Usuario : <?php echo $_SESSION['user']; ?> </label> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Mi perfil</a>
+                      <a class="dropdown-item" href="../../Interfaz_2/dashboard.php">Dashboard</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="../../Interfaz_3/personal.php">Personal</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="../../Interfaz_3/acceso.php">Registro de acceso</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                     </div>
@@ -238,8 +243,8 @@
                                         <h6 class="d-inline-block mb-0">250</h6>
                                         </div>
                                     </div>
-                                    
-                                    <button class="btn btn-primary w-100">Ver detalles</button>
+                                    <!--  -->
+                                        <a href="../../Interfaz_2/dashboard.php" class="btn btn-primary w-100" role="button" aria-pressed="true">Ver detalles</a>
                                 </div>
                             </div>
                           </div>
