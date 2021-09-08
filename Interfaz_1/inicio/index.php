@@ -40,7 +40,8 @@
         <!-- Sidebar -->
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
-                <h4 class="text-light  mb-0">Hospital Héroes del Bicentenario<i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i></h4>
+                <h4 class="text-light  mb-0">Hospital Héroes del Bicentenario
+                <br><br><i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i></h4>
             </div>
             <div class="menu">
                 <a href="../../Interfaz_2/dashboard.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>

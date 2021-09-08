@@ -35,7 +35,8 @@
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
                 <h4 class="text-light  mb-0">
-                    <a href="../Interfaz_1/inicio/index.php">Hospital Héroes del Bicentenario</a>
+                    <a href="../Interfaz_1/inicio/index.php" class="text-light">Hospital Héroes del Bicentenario</a>
+                    <br><br>
                     <i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i>
                 </h4>
             </div>
