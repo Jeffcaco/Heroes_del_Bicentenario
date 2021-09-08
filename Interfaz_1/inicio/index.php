@@ -3,11 +3,13 @@
     include_once("../../database/conexion.php");
     session_start();
     //si se desea extraer mas datos
-    /*$usuario=$_SESSION['user'];
-    $consulta = "SELECT * FROM Usuario WHERE user='$usuario'";
+    $usuario=$_SESSION['user'];
+    $consulta = "SELECT E.DNI as dni,E.nombre as nombre, E.area as area, E.RFID as rfid FROM Usuario as U
+                            INNER JOIN empleado as E on U.idUser=E.idUsuario WHERE user='$usuario'";
+
     $resultado = mysqli_query($conexion, $consulta);
     $row = mysqli_fetch_array($resultado);
-    <?php echo $row['password']; ?>*/
+    //<?php echo $row['password']; ?>
     
 ?>
 <!doctype html>
@@ -42,6 +44,7 @@
             <div class="logo">
                 <h4 class="text-light  mb-0">Hospital Héroes del Bicentenario
                 <br><br><i class="icon ion-md-hand mr-3"></i><i class="icon ion-md-heart mr-3"></i></h4>
+                
             </div>
             <div class="menu">
                 <a href="../../Interfaz_2/dashboard.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
@@ -77,7 +80,9 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <label for="usuario">Usuario : <?php echo $_SESSION['user']; ?> </label> 
+                                                                    
+                            <label for="usuario">Usuario : <?php echo $row['dni'] //<$_SESSION['user'] ?> </label>
+                              
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="../../Interfaz_2/dashboard.php">Dashboard</a>
@@ -102,7 +107,8 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-lg-9 col-md-8">
-                            <h1 class="font-weight-bold mb-0">Bienvenido <?php echo $_SESSION['user']; ?></h1>
+                            <h1 class="font-weight-bold mb-0">Bienvenido <?php echo $row['nombre'] ?></h1>
+                            <label for="">Área perteneciente : <?php echo $row['area'] //<$_SESSION['user'] ?> </label>
                             <p class="lead text-muted">Revisa la última información</p>
                           </div>
                           <div class="col-lg-3 col-md-4 d-flex">
