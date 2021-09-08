@@ -1,5 +1,5 @@
 <?php
-include("../../database/conexion.php");
+include_once("../database/conexion.php");
 
 $DNI=$_POST['codigo'];
 $nombre=$_POST['nombre'];
@@ -8,7 +8,7 @@ $actividad=$_POST['actividad'];
 
 
 $sql="INSERT INTO empleado VALUES('$DNI','$nombre','$estado','$actividad')";
-$query= mysqli_query($conn,$sql);
+$query= mysqli_query($conexion,$sql);
 
 if($query){
     Header("Location: personal.php");
