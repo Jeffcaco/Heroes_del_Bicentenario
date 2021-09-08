@@ -2,7 +2,7 @@
 // Notificar solamente errores de ejecución
 //error_reporting(E_ERROR | E_PARSE);
 try{
-            $conexion=mysqli_connect("boutiquedkar.cuxsffuy95k9.us-east-1.rds.amazonaws.com","admin", "admin12345678", "boutique");
+            $conexion=mysqli_connect("database-rfid-iot-grupo04.cuxsffuy95k9.us-east-1.rds.amazonaws.com","admin", "admin12345678", "internetofthings");
             if (!$conexion) {
                 echo "Error de conexion: " . mysqli_connect_error();
                 echo "NO TE PREOCUPES,INTENTA VOLVER A CARGAR LA PAGINA.EL SERVIDOR DE BASE DE DATOS PUEDE ESTAR OCUPADO";

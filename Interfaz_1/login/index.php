@@ -21,6 +21,8 @@
                     mysqli_close($conexion);
                     header("Location:../inicio/");
                 }else{
+  
+                
                   echo '
                   <script>
                       alert("Inicie sesión primero");
