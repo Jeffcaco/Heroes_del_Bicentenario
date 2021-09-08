@@ -16,6 +16,14 @@ a:hover {
     text-decoration: none;
 }
 
+.logo h4 a{		
+	color: #FFF;	
+}
+
+.logo h4 a:link, .logo h4 a:active {
+    text-decoration: none;
+}
+
 .bg-primary { background-color: var(--primary) !important; }
 
 .bg-light { background-color: var(--light) !important; }
