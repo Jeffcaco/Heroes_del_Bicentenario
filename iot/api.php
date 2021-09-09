@@ -14,14 +14,27 @@ echo "<h3>Fecha de acceso: ".$fecha."</h3><br>";
 
 include_once("../database/conexion.php");
 
-if($estado=="PERMITIDO"){
+if(strtolower($estado)=="permitido"){
     $estado=1;
 
 }else{
     $estado=0;
 }
 
-$sql="INSERT INTO registro(RFID,fecha,acceso) VALUES('$serial','$fecha',$estado);";
+$listarea=array("Sala de Seguridad",
+            "Sala de Operaciones A",
+            "Sala de Operaciones B",
+            "Sala de Operaciones C",
+            "Sala de Operaciones D",
+            "Laboratorio"
+);
+shuffle($listarea);
+$keys=array_rand($listarea,1);
+echo "<h3>Area: ".$listarea[$keys]."</h3><br>";
+//echo "<h3>Area: ".$area[$keys]."</h3><br>";
+$area=$listarea[$keys];
+
+$sql="INSERT INTO registro(RFID,fecha,acceso,area) VALUES('$serial','$fecha',$estado,'$area');";
 $query=mysqli_query($conexion,$sql);
 
 if($query){
