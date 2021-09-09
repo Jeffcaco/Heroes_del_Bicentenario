@@ -39,6 +39,8 @@ $query=mysqli_query($conexion,$sql);
 
 if($query){
     echo "<h3>Registro guardado en la base de datos</h3>";
+}else{
+    echo "<h3 style='color:red;'>Error al guardar el registro en la base de datos</h3>";
 }
 
 ?>
