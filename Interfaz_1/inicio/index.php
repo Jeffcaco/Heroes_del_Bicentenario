@@ -220,6 +220,7 @@
                                             echo date('m-d-Y, h:i:s a', time()); 
                                         ?>
                                     </h4></span>
+                                    <h3 class="link text-dark">Total : <?php echo $regitrados ?></h3>
                                   </div>
                                   <div class="card-body">
                                     <canvas id="myChart" width="300" height="150"></canvas>
@@ -318,7 +319,7 @@
                 data: {
                     labels: ['Seguridad', 'Laboratorio','Operaciones A', 'Operaciones B','Operaciones C','Operaciones D'],
                     datasets: [{
-                        label: 'Cantidad = <?php echo $regitrados ?>',
+                        label: 'Cantidad',
                         data: [<?php print $regitradosA.','.$regitradosB.','.$regitradosC.','.$regitradosD.','.$regitradosE.','.$regitradosF; ?>],
                         backgroundColor: [
                             '#B10F1C',  
