@@ -24,7 +24,8 @@ $row=mysqli_fetch_array($query);
                             <input type="hidden" name="DNI" value="<?php echo $row['DNI']  ?>">
                             <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre" value="<?php echo $row['nombre']  ?>">
                             <input type="text" class="form-control mb-3" name="estado" placeholder="Estado" value="<?php echo $row['estado']  ?>">
-                            <input type="text" class="form-control mb-3" name="actividad" placeholder="Ultima actividad" value="<?php echo $row['ultActividad']  ?>">
+                            <input type="text" class="form-control mb-3" name="area" placeholder="Ultima actividad" value="<?php echo $row['area']  ?>">
+                            <input type="text" class="form-control mb-3" name="RFID" placeholder="RFID" value="<?php echo $row['RFID']  ?>">
                         <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
                         <input type="submit" class="btn btn-primary btn-block" value="Volver" onclick="location.href='personal.php'">
                         
