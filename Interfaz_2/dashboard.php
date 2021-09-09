@@ -117,7 +117,7 @@
                     Estadísticas</a>
                 <a href="../Interfaz_3/acceso.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-book lead mr-2"></i></i>
                     Registro de acceso</a>
-                <a href="../cerrar_sesion/cerrar_sesion.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-close lead mr-2"></i></i>
+                <a href="../Interfaz_1/cerrar_sesion/cerrar_sesion.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-close lead mr-2"></i></i>
                     Cerrar cesión</a>
             </div>
         </div>
@@ -149,7 +149,7 @@
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="../Interfaz_3/acceso.php">Registro de acceso</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
+                      <a class="dropdown-item" href="../Interfaz_1/cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                     </div>
                   </li>
                 </ul>
