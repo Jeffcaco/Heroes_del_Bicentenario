@@ -1,6 +1,14 @@
 <?php
     include_once("../database/conexion.php");
-    session_start();  
+    session_start();
+    
+    $usuario=$_SESSION['user'];
+    $consulta = "SELECT E.DNI as dni,E.nombre as nombre, E.area as area, E.RFID as rfid FROM Usuario as U
+                            INNER JOIN empleado as E on U.idUser=E.idUsuario WHERE user='$usuario'";
+
+    $resultado = mysqli_query($conexion, $consulta);
+    $row2 = mysqli_fetch_array($resultado);
+    
 ?>
 
 <?php
@@ -131,8 +139,8 @@
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                   <li class="nav-item dropdown">
                     <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <label for="usuario">Usuario : <?php echo $_SESSION['user']; ?> </label> 
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                                                    
+                        <label for="usuario">Usuario : <?php echo $row2['dni'] //<$_SESSION['user'] ?> </label>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="">Dashboard</a>
@@ -175,28 +183,28 @@
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Ingresos registrados a las áreas</h6>
-                                        <h3 class="font-weight-bold"><?php echo $aceptados; ?></h3>
+                                        <h3 class="font-weight-bold" style="text-align:center;"><?php echo $aceptados; ?></h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Ingresos denegados a las áreas</h6>
-                                        <h3 class="font-weight-bold"><?php echo $denegados; ?></h3>
+                                        <h3 class="font-weight-bold" style="text-align:center;"><?php echo $denegados; ?></h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Empleados registrados</h6>
-                                        <h3 class="font-weight-bold"><?php echo $num_empleados; ?></h3>
+                                        <h3 class="font-weight-bold" style="text-align:center;"><?php echo $num_empleados; ?></h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Áreas bioseguridad</h6>
-                                        <h3 class="font-weight-bold">6</h3>
+                                        <h3 class="font-weight-bold" style="text-align:center;">6</h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
