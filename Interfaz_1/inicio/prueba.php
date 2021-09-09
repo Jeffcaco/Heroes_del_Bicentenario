@@ -14,30 +14,6 @@
     $consulta2="SELECT * FROM registro WHERE acceso=1";
     $resultado2 = mysqli_query($conexion, $consulta2);
     $regitrados = mysqli_num_rows($resultado2);
-
-    $consultaA="SELECT * FROM registro WHERE acceso=1 AND area='Sala de Seguridad'";
-    $resultadoA = mysqli_query($conexion, $consultaA);
-    $regitradosA = mysqli_num_rows($resultadoA);
-
-    $consultaB="SELECT * FROM registro WHERE acceso=1 AND area='Laboratorio'";
-    $resultadoB = mysqli_query($conexion, $consultaB);
-    $regitradosB = mysqli_num_rows($resultadoB);
-
-    $consultaC="SELECT * FROM registro WHERE acceso=1 AND area='Sala de Operaciones A'";
-    $resultadoC = mysqli_query($conexion, $consultaC);
-    $regitradosC = mysqli_num_rows($resultadoC);
-
-    $consultaD="SELECT * FROM registro WHERE acceso=1 AND area='Sala de Operaciones B'";
-    $resultadoD = mysqli_query($conexion, $consultaD);
-    $regitradosD = mysqli_num_rows($resultadoD);
-
-    $consultaE="SELECT * FROM registro WHERE acceso=1 AND area='Sala de Operaciones C'";
-    $resultadoE = mysqli_query($conexion, $consultaE);
-    $regitradosE = mysqli_num_rows($resultadoE);
-
-    $consultaF="SELECT * FROM registro WHERE acceso=1 AND area='Sala de Operaciones D'";
-    $resultadoF = mysqli_query($conexion, $consultaF);
-    $regitradosF = mysqli_num_rows($resultadoF);
     
 ?>
 <!doctype html>
@@ -304,22 +280,21 @@
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
         <script>
-            <?php
                   $num=50;
                   $num2=115;
                   $num3=185;
                   $num4=235;
                   $num5=235;
                   $num6=235;
-            ?>
+
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, { 
                 type: 'bar',
                 data: {
                     labels: ['Seguridad', 'Laboratorio','Operaciones A', 'Operaciones B','Operaciones C','Operaciones D'],
                     datasets: [{
-                        label: 'Cantidad = <?php echo $regitrados ?>',
-                        data: [<?php print $regitradosA.','.$regitradosB.','.$regitradosC.','.$regitradosD.','.$regitradosE.','.$regitradosF; ?>],
+                        label: 'Cantidad',
+                        data: [<?php print $num.','.$num2.','.$num3.','.$num4.','.$num5.','.$num6 ?>],
                         backgroundColor: [
                             '#B10F1C',  
                             '#343A40',
