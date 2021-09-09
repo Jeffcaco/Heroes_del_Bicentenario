@@ -4,6 +4,12 @@
     $query=mysqli_query($conexion,$sql);
     $nr = mysqli_num_rows($query);
     session_start();
+    $usuario=$_SESSION['user'];
+    $consulta = "SELECT E.DNI as dni,E.nombre as nombre, E.area as area, E.RFID as rfid FROM Usuario as U
+                            INNER JOIN empleado as E on U.idUser=E.idUsuario WHERE user='$usuario'";
+
+    $resultado = mysqli_query($conexion, $consulta);
+    $row = mysqli_fetch_array($resultado);
 ?>
 
 <!doctype html>
@@ -61,30 +67,27 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container">
-        
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-            
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <label for="usuario">Usuario : <?php echo $_SESSION['user']; ?> </label> 
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="../Interfaz_2/dashboard.php">Dashboard</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="personal.php">Personal</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="acceso.php">Registro de acceso</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../Interfaz_1/cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
-                                </div>
-                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                                
+                                <label for="usuario">Usuario : <?php echo $row['dni'] //<$_SESSION['user'] ?> </label>          
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="../../Interfaz_2/dashboard.php">Dashboard</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="../../Interfaz_3/personal.php">Personal</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="../../Interfaz_3/acceso.php">Registro de acceso</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
+                            </div>
+                        </li>
                         </ul>
                     </div>
                 </div>
@@ -93,15 +96,38 @@
 
             <!-- Page Content -->
             <div id="content" class="bg-grey w-100">
-                <section class="bg-light py-3">
+            <section class="bg-light py-3">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-7 col-md-8">
-                                <h1 class="font-weight-bold mb-0" >Registro de acceso</h1>
+                            <div class="col-lg-9 col-md-8">
+                                <h1 class="font-weight-bold mb-0">Bienvenido <?php echo $row['nombre'] ?></h1>
+                                <label for="">Área perteneciente : <?php echo $row['area'] //<$_SESSION['user'] ?> </label>
                                 <p class="lead text-muted">Revisa la última información</p>
                             </div>
-                            <div class="col-lg-3 col-md-3 d-flex">
-                                <img src="assets/image/Captura.PNG">
+                            <div class="col-lg-3 col-md-4 d-flex">
+                                <!--<button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>-->
+                                <button type="button" class="btn btn-primary w-100 align-self-center" data-toggle="modal" data-target="#exampleModal">
+                                    Ver últimas incidencias
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Reporte de incidencias</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
