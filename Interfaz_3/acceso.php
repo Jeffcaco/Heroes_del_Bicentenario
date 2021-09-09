@@ -140,20 +140,6 @@
                                                     <div class="col col-md-3">
                                                         <label for="selectLg" class=" form-control-label">Trabajador</label>
                                                     </div>
-                                                    <div class="col-10 col-md-8">
-                                                        <select name="DNI" id="selectLg" class="form-control-lg form-control">
-                                                            <option value="all">Cualquiera</option>
-                                                            <?php
-                                                                /*$query = mysqli_query($conexion,"SELECT * FROM empleado");
-                                                                $nr = mysqli_num_rows($query);
-                                                                for ($i=0; $i <$nr; $i++){
-                                                                    $n = $i + 1;
-                                                                    $row = mysqli_fetch_array($query);
-                                                                    echo "<option value='".$row['DNI']."'>".$row['nombre']."</option>";
-                                                                }*/
-                                                            ?>
-                                                        </select>
-                                                    </div>
                                                     <div class="row form-group">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-4">
@@ -176,7 +162,6 @@
                         </div>
                     </div>                    
                 </section>
-
             </div>
         </div>
     </div>
