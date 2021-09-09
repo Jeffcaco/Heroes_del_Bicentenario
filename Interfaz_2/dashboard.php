@@ -3,6 +3,64 @@
     session_start();  
 ?>
 
+<?php
+    //Obtendremos la cantidad de trabajadores con acceso a las áreas registrados 
+    $consulta="SELECT COUNT(*) as contar FROM empleado";
+    $resultado=mysqli_query($conexion,$consulta);
+    $array=mysqli_fetch_array($resultado);
+    $num_empleados=$array[0];
+
+    //Obtenemos los registros aceptados y denegados
+    $consultaAcep="SELECT COUNT(*) as contar FROM registro WHERE acceso=1 AND RFID!=''";
+    $consultaDene="SELECT COUNT(*) as contar FROM registro WHERE acceso=0 AND RFID!=''";
+    $resultadoA=mysqli_query($conexion,$consultaAcep);
+    $resultadoD=mysqli_query($conexion,$consultaDene);
+    $arrayA=mysqli_fetch_array($resultadoA);
+    $arrayD=mysqli_fetch_array($resultadoD);
+    $aceptados=$arrayA[0];
+    $denegados=$arrayD[0];
+
+    $areas = array('Sala de Seguridad', 'Sala de Operaciones A', 'Sala de Operaciones B', 'Sala de Operaciones C',
+    'Sala de Operaciones D', 'Laboratorio');
+
+    $a = array(0, 0, 0, 0, 0, 0);
+    $d = array(0, 0, 0, 0, 0, 0);
+
+    for ($i = 0; $i < 6; $i++) {
+        $consultaAcep="SELECT COUNT(*) as contar FROM registro WHERE acceso=1 AND RFID!='' AND area='$areas[$i]'";
+        $consultaDene="SELECT COUNT(*) as contar FROM registro WHERE acceso=0 AND RFID!='' AND area='$areas[$i]'";
+        $resultadoA=mysqli_query($conexion,$consultaAcep);
+        $resultadoD=mysqli_query($conexion,$consultaDene);
+        $arrayA=mysqli_fetch_array($resultadoA);
+        $arrayD=mysqli_fetch_array($resultadoD);
+        $a[$i]=$arrayA[0];
+        $d[$i]=$arrayD[0];     
+    }
+    
+    $horas = array(0, 0, 0, 0);    
+
+    $consultaInter="SELECT fecha FROM registro WHERE acceso=1 AND RFID!=''";        
+    $resultadoI=mysqli_query($conexion,$consultaInter);
+        
+    for ($i = 0; $i < $aceptados ; $i++) {        
+        $row=mysqli_fetch_array($resultadoI);
+        $hora = substr($row['fecha'], 11, 2);        
+        if($hora>=0 and $hora<6){ //0 a 6
+            $horas[0]++;
+        }
+        if($hora>=6 and $hora<12){ //6 a 12
+            $horas[1]++;
+        }
+        if($hora>=12 and $hora<18){ //12 a 18
+            $horas[2]++;
+        }
+        if($hora>=18 and $hora<24){ //18 a 24
+            $horas[3]++;
+        }     
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -117,28 +175,28 @@
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Ingresos registrados a las áreas</h6>
-                                        <h3 class="font-weight-bold">50000</h3>
+                                        <h3 class="font-weight-bold"><?php echo $aceptados; ?></h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">Incidentes registrados</h6>
-                                        <h3 class="font-weight-bold">74</h3>
+                                        <h6 class="text-muted">Ingresos denegados a las áreas</h6>
+                                        <h3 class="font-weight-bold"><?php echo $denegados; ?></h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Empleados registrados</h6>
-                                        <h3 class="font-weight-bold">250</h3>
+                                        <h3 class="font-weight-bold"><?php echo $num_empleados; ?></h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Áreas bioseguridad</h6>
-                                        <h3 class="font-weight-bold">8</h3>
+                                        <h3 class="font-weight-bold">6</h3>
                                         <h6 class="text-success" style="text-align:right;"><i class="icon ion-md-swap mr-2"></i> 00.00%</h6>
                                     </div>
                                 </div>
@@ -175,7 +233,7 @@
                         <div class="col-lg-8 my-3 mx-auto">
                           <div class="card rounded-0">
                               <div class="card-header bg-light">
-                                <h6 class="font-weight-bold mb-0">Distribución por afluencia de horarios</h6>
+                                <h6 class="font-weight-bold mb-0">Distribución de ingresos por horarios</h6>
                               </div>
                               <div class="card-body">
                                 <canvas id="horarios" width="300" height="150"></canvas>
@@ -225,7 +283,7 @@
                     labels: ['S. Seguridad', 'S. Operaciones A', 'S. Operaciones B', 'S. Operaciones C', 'S. Operaciones D', 'Laboratorio'],
                     datasets: [{
                         label: 'Ingresos registrados',
-                        data: [50, 100, 150, 130, 120, 70],
+                        data: [<?php echo $a[0]; ?>,<?php echo $a[1]; ?>,<?php echo $a[2]; ?>,<?php echo $a[3]; ?>,<?php echo $a[4]; ?>,<?php echo $a[5]; ?>],
                         backgroundColor: [
                             '#12C9E5',  
                             '#12C9E5',
@@ -254,10 +312,10 @@
           var myChart = new Chart(ctx, { 
               type: 'doughnut',
               data: {
-                  labels: ['08:00 - 12:00', '12:00 - 16:00', '16:00 - 20:00', '20:00 - 24:00'],
+                  labels: ['00:00 - 06:00', '06:00 - 12:00', '12:00 - 18:00', '18:00 - 24:00'],
                   datasets: [{
                       label: 'Distribución de horarios',
-                      data: [25, 55, 15, 5],
+                      data: [<?php echo $horas[0]; ?>,<?php echo $horas[1]; ?>,<?php echo $horas[2]; ?>,<?php echo $horas[3]; ?>],
                       backgroundColor: [
                           '#5DADE2',  
                           '#82E0AA',
@@ -277,8 +335,8 @@
             data: {
                 labels: ['S. Seguridad', 'S. Operaciones A', 'S. Operaciones B', 'S. Operaciones C', 'S. Operaciones D', 'Laboratorio'],
                 datasets: [{
-                    label: 'Ingresos denegados',
-                    data: [18, 10, 10, 3, 12, 7],
+                    label: 'Ingresos denegados',                    
+                    data: [<?php echo $d[0]; ?>,<?php echo $d[1]; ?>,<?php echo $d[2]; ?>,<?php echo $d[3]; ?>,<?php echo $d[4]; ?>,<?php echo $d[5]; ?>],
                     backgroundColor: [
                         '#12C9E5',  
                         '#12C9E5',
