@@ -139,10 +139,10 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-6">
-                                        <h2 style="color:black;" style="text-align:center;">Seleccione el ambiente y empleado:</h2>
+                                        <h2 style="color:black;" style="text-align:center;">Seleccione el ambiente:</h2>
                                         <hr>
                                         <div class="alert alert-danger" role="alert">
-                                            <p style="font-size:130%;">El hospital se divide en 4 ambientes. Presione el boton del ambiente que desea analizar; 
+                                            <p style="font-size:130%;">El hospital se divide en 6 ambientes. Presione el boton del ambiente que desea analizar; 
                                                 a su derecha hay un plano del hospital que sirve como guía.
                                             </p>
                                             <hr>
