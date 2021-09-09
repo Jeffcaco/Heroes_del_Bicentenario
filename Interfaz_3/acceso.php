@@ -84,7 +84,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../Interfaz_3/acceso.php">Registro de acceso</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
+                            <a class="dropdown-item" href="../Interfaz_1/cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                             </div>
                         </li>
                         </ul>
@@ -160,7 +160,6 @@
                                                             <option value="Sala de operaciones B">Sala de operaciones B</option>
                                                             <option value="Sala de operaciones C">Sala de operaciones C</option>
                                                             <option value="Sala de operaciones D">Sala de operaciones D</option>
-                                                            <option value="Limpieza">Limpieza</option>
                                                         </select>
                                                     </div>
                                                 </div>
