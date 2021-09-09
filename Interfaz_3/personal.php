@@ -85,7 +85,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../Interfaz_3/acceso.php">Registro de acceso</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
+                            <a class="dropdown-item" href="../Interfaz_1/cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                             </div>
                         </li>
                         </ul>
@@ -139,15 +139,6 @@
                             <div class="typo-headers">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <h1>Ingrese datos</h1>
-                                            <form action="insertar.php" method="POST">
-                                                <input type="text" class="form-control mb-3" name="codigo" placeholder="Codigo">
-                                                <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
-                                                <input type="text" class="form-control mb-3" name="estado" placeholder="Estado">
-                                                <input type="text" class="form-control mb-3" name="area" placeholder="Area">
-                                                <input type="text" class="form-control mb-3" name="RFID" placeholder="RFID">
-                                                <input type="submit" class="btn btn-primary">
-                                            </form>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="alert alert-danger" role="alert">

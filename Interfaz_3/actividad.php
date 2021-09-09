@@ -90,7 +90,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../Interfaz_3/acceso.php">Registro de acceso</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
+                            <a class="dropdown-item" href="../Interfaz_1/cerrar_sesion/cerrar_sesion.php">Cerrar sesión</a>
                             </div>
                         </li>
                         </ul>
