@@ -2,7 +2,6 @@
     include("../database/conexion.php");
     session_start();
     $v1 = $_POST['area'];
-    $v2 = $_POST['DNI'];
 ?>
 
 <!doctype html>
@@ -131,32 +130,27 @@
                                                             <table class="table table-borderless table-striped" style="width:100%;">
                                                                 <thead>
                                                                     <tr style="background-color: #5DC1B9;">
-                                                                        <th >AREA</th>
-                                                                        <th>HORA</th>
-                                                                        <th class="text-right">RESULTADO</th>
+                                                                        <th >ID</th>
+                                                                        <th >RFID</th>
+                                                                        <th>FECHA</th>
+                                                                        <th class="text-right">ACCESO</th>
+                                                                        <th>AREA</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php
                                                                         
-                                                                        /*if(isset($_POST['area']) && isset($_POST['DNI']) ){
-                                                                            if(strlen($_POST['area']) >= 1 && strlen($_POST['dni']) >= 1 ){
+                                                                        /*if(isset($_POST['area']) ){
+                                                                            if(strlen($_POST['area']) >= 1 ){
                                                                                 $v1 = $_POST['area'];
                                                                                 $v2 = $_POST['DNI'];*/
 
-                                                                                /*
+                                                                                
                                                                                 if($v1 =="all"){
-                                                                                    if($v2=="all"){
-                                                                                        $query = mysqli_query($conexion,"SELECT * FROM acceso");
-                                                                                    }else{
-                                                                                        $query = mysqli_query($conexion,"SELECT * FROM acceso WHERE DNIemp = ".$v2."");
-                                                                                    }
+                                                                                    $query = mysqli_query($conexion,"SELECT * FROM registro");
                                                                                 }else{
-                                                                                    if($v2=="all"){
-                                                                                        $query = mysqli_query($conexion,"SELECT * FROM acceso WHERE area = '".$v1."'");
-                                                                                    }else{
-                                                                                        $query = mysqli_query($conexion,"SELECT * FROM acceso WHERE DNIemp = ".$v2." and area = '".$v1."'");
-                                                                                    }
+                                                                                    $query = mysqli_query($conexion,"SELECT * FROM registro WHERE area = '".$v1."'");
+                                                                                    
                                                                                 }
                                                                                 $nr = mysqli_num_rows($query);
                                                                                 if($nr < 1){
@@ -168,13 +162,15 @@
                                                                                         
                                                                                         echo "
                                                                                         <tr>
+                                                                                            <td>".$row['idRegistro']."</td>
+                                                                                            <td>".$row['RFID']."</td>
+                                                                                            <td>".$row['fecha']."</td>
+                                                                                            <td class='text-right'><span class='badge badge-success' style='font-size: 110%;'>".$row['acceso']."</span></td>
                                                                                             <td>".$row['area']."</td>
-                                                                                            <td>".$row['hora']."</td>
-                                                                                            <td class='text-right'><span class='badge badge-success' style='font-size: 110%;'>".$row['resultado']."</span></td>
                                                                                         </tr>
                                                                                         <tr class=\"spacer\"></tr>";
                                                                                     }
-                                                                                }*/
+                                                                                }
                                                                            /*}
                                                                         }*/
                                                                     ?>

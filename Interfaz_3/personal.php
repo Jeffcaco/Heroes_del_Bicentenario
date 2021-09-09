@@ -1,8 +1,8 @@
 <?php
     include("../database/conexion.php");
-    /*$sql="SELECT * FROM empleado";
+    $sql="SELECT * FROM empleado";
     $query=mysqli_query($conexion,$sql);
-    $nr = mysqli_num_rows($query);*/
+    $nr = mysqli_num_rows($query);
     session_start();
 ?>
 
@@ -118,7 +118,8 @@
                                                 <input type="text" class="form-control mb-3" name="codigo" placeholder="Codigo">
                                                 <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
                                                 <input type="text" class="form-control mb-3" name="estado" placeholder="Estado">
-                                                <input type="text" class="form-control mb-3" name="actividad" placeholder="Ultima actividad">
+                                                <input type="text" class="form-control mb-3" name="area" placeholder="Area">
+                                                <input type="text" class="form-control mb-3" name="RFID" placeholder="RFID">
                                                 <input type="submit" class="btn btn-primary">
                                             </form>
                                     </div>
@@ -136,7 +137,8 @@
                                                                     <th>Codigo</th>
                                                                     <th>Nombres</th>
                                                                     <th>Estado</th>
-                                                                    <th>Ultima actividad</th>
+                                                                    <th>Area</th>
+                                                                    <th>RFID</th>
                                                                     <th></th>
                                                                     <th></th>
                                                                 </tr>
@@ -144,7 +146,7 @@
                             
                                                             <tbody>
                                                                 <?php
-                                                                    /*if($nr < 1){
+                                                                    if($nr < 1){
                                                                         echo "<option value='No hay Especialidades'>No hay Especialidades</option>";
                                                                     }else{
                                                                         for ($i=0; $i <$nr; $i++){
@@ -155,14 +157,15 @@
                                                                                 <th>".$row['DNI']."</th>
                                                                                 <th>".$row['nombre']."</th>
                                                                                 <th><span class='badge badge-success' style='font-size: 110%;'>".$row['estado']."</span></th>
-                                                                                <th>".$row['ultActividad']."</th>"   */ 
+                                                                                <th>".$row['area']."</th>
+                                                                                <th>".$row['RFID']."</th>"   
                                                                 ?>
                                                                                 <th><a href="actualizar.php?id=<?php echo $row['DNI'] ?>" class="btn btn-info">Editar</a></th>
                                                                                 <th><a href="delete.php?id=<?php echo $row['DNI'] ?>" class="btn btn-danger">Eliminar</a></th>                                       
                                                                             </tr>
                                                                 <?php
-                                                                        /*}
-                                                                    }*/
+                                                                        }
+                                                                    }
                                                                 ?>    
                                                             </tbody>
                                                         </table>

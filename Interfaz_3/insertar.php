@@ -4,10 +4,11 @@ include_once("../database/conexion.php");
 $DNI=$_POST['codigo'];
 $nombre=$_POST['nombre'];
 $estado=$_POST['estado'];
-$actividad=$_POST['actividad'];
+$area=$_POST['area'];
+$RFID = $_POST['RFID'];
 
 
-$sql="INSERT INTO empleado VALUES('$DNI','$nombre','$estado','$actividad')";
+$sql="INSERT INTO empleado VALUES('$DNI','$nombre','$estado','$area','$RFID')";
 $query= mysqli_query($conexion,$sql);
 
 if($query){
