@@ -156,7 +156,6 @@
                                                             <table class="table table-borderless table-striped" style="width:100%;">
                                                                 <thead>
                                                                     <tr style="background-color: #5DC1B9;">
-                                                                        <th >ID</th>
                                                                         <th >RFID</th>
                                                                         <th>FECHA</th>
                                                                         <th class="text-right">ACCESO</th>
@@ -194,7 +193,6 @@
                                                                                         
                                                                                         echo "
                                                                                         <tr>
-                                                                                            <td>".$row['idRegistro']."</td>
                                                                                             <td>".$row['RFID']."</td>
                                                                                             <td>".$row['fecha']."</td>
                                                                                             <td class='text-right'><span class='badge badge-.$b.' style='font-size: 110%;'>".$a."</span></td>
@@ -208,6 +206,7 @@
                                                                     ?>
                                                                 </tbody>
                                                             </table>
+                                                            <label for="">Existe un total de : <?php echo $nr?> </label>
                                                         </div>                                               
                                                     </div>
                                                     <div class="row form-group">
